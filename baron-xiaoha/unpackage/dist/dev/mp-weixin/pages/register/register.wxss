@@ -80,6 +80,7 @@
   padding: 54rpx 60rpx 120rpx;
 }
 .main .inputs .input {
+  border: none;
   height: 60rpx;
   width: 628rpx;
   font-size: 28rpx;
@@ -93,6 +94,15 @@
   padding: 20rpx;
 }
 .main .inputs .employ,
+.main .inputs .checknumber {
+  position: absolute;
+  top: 100rpx;
+  left: 10rpx;
+  margin-top: 20rpx;
+  margin-left: 5rpx;
+  font-size: 22rpx;
+  color: #F07373;
+}
 .main .inputs .invalid {
   position: absolute;
   right: 20rpx;
@@ -107,7 +117,7 @@
 }
 .main .inputs .show {
   position: absolute;
-  right: 20rpx;
+  right: 30rpx;
   top: 20rpx;
   width: 42rpx;
   height: 32rpx;

@@ -48,13 +48,12 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: #ffffff;
-  margin-top: 16rpx;
 }
-.top-bar .top-bar-right {
-  float: right;
-  margin-bottom: 30rpx;
+.top-bar .top-bar-left {
+  float: left;
+  margin-left: 50rpx;
 }
-.top-bar .top-bar-right .text {
+.top-bar .top-bar-left .text {
   font-size: 36rpx;
   font-family: PingFangSC-Medium, PingFang SC;
   font-weight: 510;
