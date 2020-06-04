@@ -82,7 +82,8 @@ export default {
 	// box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
 	margin-top: 16rpx;
 	.top-bar-right {
-		float: right;
+		float: left;
+		margin-left: 45rpx;
 		margin-bottom: 30rpx;
 		.text {
 			font-size: 36rpx;
