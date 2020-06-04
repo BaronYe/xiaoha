@@ -3,20 +3,66 @@
 		{
 			"path": "pages/login/login",
 			"style": {
-				"navigationStyle": "custom"
 			}
 		},
 		{
 			"path": "pages/register/register",
+			"style": {}
+		}, {
+			"path": "pages/home/home",
 			"style": {
-				"navigationStyle": "custom"
+				"navigationBarTitleText":"首页"
+			}
+		}, {
+			"path": "pages/relation_find/relation_find",
+			"style": {
+				"navigationBarTitleText":"找人脉"
+			}
+		}, {
+			"path": "pages/chat/chat",
+			"style": {
+				"navigationBarTitleText":"消息"
+			}
+		}, {
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText":""
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+		"color": "#555555",
+		"selectedColor": "#3c7de9",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/images/tabbar/home_before.png",
+				"selectedIconPath": "static/images/tabbar/home_after.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/relation_find/relation_find",
+				"iconPath": "static/images/tabbar/search_before.png",
+				"selectedIconPath": "static/images/tabbar/search_after.png",
+				"text": "找人脉"
+			},
+			{
+				"pagePath": "pages/chat/chat",
+				"iconPath": "static/images/tabbar/notice_before.png",
+				"selectedIconPath": "static/images/tabbar/notice_after.png",
+				"text": "消息"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/images/tabbar/mine_before.png",
+				"selectedIconPath": "static/images/tabbar/mine_after.png",
+				"text": "我的"
+			}
+		]
 	}
 }

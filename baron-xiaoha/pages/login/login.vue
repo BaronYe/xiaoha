@@ -30,6 +30,8 @@ export default {
 			password: ''
 		};
 	},
+	onLoad() {
+	},
 	methods: {
 		//跳转到注册页面
 		toRegister: function() {
@@ -53,6 +55,20 @@ export default {
 					},
 					success(res) {
 						console.log(res);
+						console.log(res.result.status);
+						if (res.result.status === 0) {
+							uni.switchTab({
+								url: '/pages/home/home',
+								success() {
+									uni.setStorage({
+										key: 'token',
+										data: 'ok'
+									});
+								}
+							});
+						} else {
+							console.log('登陆失败');
+						}
 					}
 				});
 			} else {
