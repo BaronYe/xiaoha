@@ -130,8 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -174,7 +173,8 @@ var _default =
 {
   data: function data() {
     return {
-      type: 'password',
+
+      type: "password",
       isuser: 0, //用户名是否占用
       isemail: 0, //邮箱是否占位
       show: false, // 是否显示密码
@@ -182,7 +182,10 @@ var _default =
       employ: false, //是否被占用
       showurl: '../../static/images/register/showin.png',
       email: '',
-      name: '' };
+      name: '',
+      password: '',
+      check_password: '',
+      checkshow: false };
 
   },
   methods: {
@@ -209,8 +212,71 @@ var _default =
       uni.navigateBack({
         delta: 1 });
 
+    },
+    checknumber: function checknumber() {
+      var reg = /^[A-Za-z0-9]{6,20}$/;
+      if (this.password === this.check_password && reg.test(this.password)) {
+        this.checkshow = false;
+      } else {
+        this.checkshow = true;
+      }
+    },
+    check: function check() {
+
+      if (this.check_password.length > 0) {
+        var reg = /^[A-Za-z0-9]{6,20}$/;
+
+        if (this.password === this.check_password && reg.test(this.password)) {
+          this.checkshow = false;
+
+
+
+        } else {
+          this.checkshow = true;
+
+        }
+
+
+      }
+    },
+    submit: function submit() {
+
+      if (this.checkshow === false && this.check_password.length > 0) {
+
+        uniCloud.callFunction({
+          name: 'register',
+          data: {
+            user_id: this.name,
+            password: this.password },
+
+
+          success: function success(res) {
+            console.log(res);
+          } });
+
+
+
+
+
+
+      } else {
+        //弹一个提示框
+        uni.showModal({
+          title: '提示',
+          content: '请输入正确的账号和密码',
+          success: function success(res) {
+            if (res.confirm) {
+              console.log('用户点击确定');
+            } else if (res.cancel) {
+              console.log('用户点击取消');
+            }
+          } });
+
+        this.checkshow = true;
+      }
+
     } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 17)["default"]))
 
 /***/ }),
 

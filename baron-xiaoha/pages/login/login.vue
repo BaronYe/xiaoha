@@ -2,7 +2,7 @@
 	<view class="content">
 		<!-- 顶栏 -->
 		<view class="top-bar">
-			<view class="top-bar-right" @click="toRegister()"><view class="text">注册</view></view>
+			<view class="top-bar-left" @click="toRegister()"><view class="text">注册</view></view>
 		</view>
 		<!-- 图标 -->
 		<view class="logo"><image src="../../static/images/index/logo.png" class="logo-image"></image></view>
@@ -96,10 +96,9 @@ export default {
 	box-sizing: border-box;
 	background: $uni-bg-color;
 	// box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
-	margin-top: 16rpx;
-	.top-bar-right {
-		float: right;
-		margin-bottom: 30rpx;
+	.top-bar-left {
+		float: left;
+		margin-left: 50rpx;
 		.text {
 			font-size: 36rpx;
 			font-family: PingFangSC-Medium, PingFang SC;
