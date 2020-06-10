@@ -5,7 +5,11 @@
     "pages/home/home",
     "pages/relation_find/relation_find",
     "pages/chat/chat",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/notice/notice",
+    "pages/edit/edit",
+    "pages/Room/Room",
+    "pages/watchArticle/watchArticle"
   ],
   "subPackages": [],
   "window": {
@@ -31,7 +35,7 @@
         "text": "找人脉"
       },
       {
-        "pagePath": "pages/chat/chat",
+        "pagePath": "pages/notice/notice",
         "iconPath": "static/images/tabbar/notice_before.png",
         "selectedIconPath": "static/images/tabbar/notice_after.png",
         "text": "消息"
@@ -45,5 +49,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap37.json"
+  "sitemapLocation": "sitemap80.json"
 }

@@ -2,8 +2,7 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/login/login",
-			"style": {
-			}
+			"style": {}
 		},
 		{
 			"path": "pages/register/register",
@@ -11,25 +10,42 @@
 		}, {
 			"path": "pages/home/home",
 			"style": {
-				"navigationBarTitleText":"首页"
+				"navigationBarTitleText": ""
 			}
 		}, {
 			"path": "pages/relation_find/relation_find",
 			"style": {
-				"navigationBarTitleText":"找人脉"
+				"navigationBarTitleText": ""
 			}
 		}, {
 			"path": "pages/chat/chat",
 			"style": {
-				"navigationBarTitleText":"消息"
+				"navigationBarTitleText": ""
 			}
 		}, {
 			"path": "pages/user/user",
 			"style": {
-				"navigationBarTitleText":""
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": true
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/notice/notice",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/edit/edit",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/Room/Room",
+            "style" : {}
+        }
+        ,{
+            "path" : "pages/watchArticle/watchArticle",
+            "style" : {}
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarBackgroundColor": "#FFFFFF",
@@ -52,7 +68,7 @@
 				"text": "找人脉"
 			},
 			{
-				"pagePath": "pages/chat/chat",
+				"pagePath": "pages/notice/notice",
 				"iconPath": "static/images/tabbar/notice_before.png",
 				"selectedIconPath": "static/images/tabbar/notice_after.png",
 				"text": "消息"

@@ -1,5 +1,5 @@
 {
-    "name" : "baron-xiaoha",
+    "name" : "小哈职业",
     "appid" : "__UNI__A9BC531",
     "description" : "",
     "versionName" : "1.0.0",
@@ -57,9 +57,12 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wx3fbd8c8ce5e4c98d",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : true,
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
         },
         "usingComponents" : true
     },
@@ -72,7 +75,7 @@
     "mp-toutiao" : {
         "usingComponents" : true
     },
-    "uniStatistics": {  
-        "enable": false
+    "uniStatistics" : {
+        "enable" : false
     }
 }

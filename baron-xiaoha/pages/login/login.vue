@@ -5,7 +5,7 @@
 			<view class="top-bar-left" @click="toRegister()"><view class="text">注册</view></view>
 		</view>
 		<!-- 图标 -->
-		<view class="logo"><image src="../../static/images/index/logo.png" class="logo-image"></image></view>
+		<view class="logo"><image src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-baron-xiaoha/a81c29e0-a7a2-11ea-b244-a9f5e5565f30.png" class="logo-image"></image></view>
 		<!-- 登陆 -->
 		<view class="main">
 			<view class="title"></view>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
 	data() {
 		return {
@@ -30,8 +31,7 @@ export default {
 			password: ''
 		};
 	},
-	onLoad() {
-	},
+	onLoad() {},
 	methods: {
 		//跳转到注册页面
 		toRegister: function() {
@@ -47,16 +47,19 @@ export default {
 		},
 		onlogin() {
 			if (this.user && this.password) {
-				uniCloud.callFunction({
-					name: 'login',
-					data: {
-						user_id: this.user,
-						password: this.password
-					},
-					success(res) {
+				uniCloud
+					.callFunction({
+						name: 'login',
+						data: {
+							user_id: this.user,
+							password: this.password
+						}
+					})
+					.then(res => {
 						console.log(res);
 						console.log(res.result.status);
 						if (res.result.status === 0) {
+							const userId = this.user;
 							uni.switchTab({
 								url: '/pages/home/home',
 								success() {
@@ -64,13 +67,18 @@ export default {
 										key: 'token',
 										data: 'ok'
 									});
+									uni.setStorage({
+										key: 'user_id',
+										data: userId
+									});
 								}
 							});
+							console.log(res.result);
+							this.$store.commit('setUser_id', this.user);
 						} else {
 							console.log('登陆失败');
 						}
-					}
-				});
+					});
 			} else {
 				this.login = true;
 			}
@@ -92,7 +100,6 @@ export default {
 	top: 0;
 	width: 100%;
 	height: 88rpx;
-	padding-top: var(--status-bar-height);
 	box-sizing: border-box;
 	background: $uni-bg-color;
 	// box-shadow: 0rpx 1rpx 0rpx 0rpx rgba(0, 0, 0, 0.1);
