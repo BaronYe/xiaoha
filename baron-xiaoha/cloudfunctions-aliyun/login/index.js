@@ -9,7 +9,6 @@ exports.main = async (event, context) => {
 		user_id: user_id,
 		password: password
 	}).get()
-	console.log(res.data)
 	if (res.data == '') {
 		return {
 			status: 1,

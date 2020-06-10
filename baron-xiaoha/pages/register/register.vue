@@ -10,7 +10,7 @@
 			<view class="title"></view>
 			<view class="inputs">
 				<view class="inputs-div">
-					<input class="input" type="text" placeholder="请输入用户名" placeholder-style="color:#aaa;font-weight:400;" @blur="isname"
+					<input class="input" type="text" placeholder="请输入用户名" placeholder-style="color:#aaa;font-weight:400;" @blur="checkPhone()"
 					 v-model="name" />
 					<view class="employ" v-show="employ">已占用</view>
 					<image src="../../static/images/register/right.png" class="ok" v-show="isuser"></image>
@@ -69,13 +69,7 @@
 					this.showurl = '../../static/images/register/showon.png';
 				}
 			},
-			isname: function() {
-				if (this.name.length > 0) {
-					this.isuser = true;
-				} else {
-					this.isuser = false;
-				}
-			},
+			
 			goLogin: function() {
 				uni.navigateBack({
 					delta: 1
@@ -109,7 +103,7 @@
 			},
 			submit() {
 
-				if (this.checkshow === false && this.check_password.length > 0) {
+				if (this.checkshow === false && this.checkall()) {
 
 					uniCloud.callFunction({
 						name: 'register',
@@ -121,6 +115,35 @@
 						success(res) {
 							console.log(res)
 						}
+					})
+					uniCloud.callFunction({
+						name:'createUserInfo',
+						data:{
+						
+							address:'',
+							age:'',
+							avatar_url:'',
+							collection:'',
+							followers:'',
+							followings:'',
+							friends:'',
+							label:'',
+							occupation:'',
+							profession:'',
+							realnames:'',
+							sex:'',
+							status:'',
+							subject:'',
+							university_id:'',
+							user_id: this.name,
+							user_name:'',
+							user_word:''
+						}
+					}).then(res=>{
+						uni.navigateTo({
+							url:'../login/login'
+						})
+						console.log(res)
 					})
 
 
@@ -143,6 +166,57 @@
 					this.checkshow = true
 				}
 
+			},
+			checkPhone(){
+				if(!(/^1[3456789]\d{9}$/.test(this.name))){
+					uni.showModal({
+						title:'提示',
+						content:'请输入正确的手机号码',
+						success: function(res) {
+							if (res.confirm) {
+								console.log('用户点击确定');
+							} else if (res.cancel) {
+								console.log('用户点击取消');
+							}
+						}
+					})
+					this.isuser=false
+				}
+				else{
+					uniCloud.callFunction({
+						name:'checkUsername',
+						data:{
+							user_id: this.name
+						}
+					}).then(res=>{
+						if(res.result.status===true){
+							this.isuser=false
+							uni.showModal({
+								title:'提示',
+								content:'该手机号已经存在',
+								success: function(res) {
+									if (res.confirm) {
+										console.log('用户点击确定');
+									} else if (res.cancel) {
+										console.log('用户点击取消');
+									}
+								}
+							})
+							
+						}else{
+							this.isuser=true
+						}
+					
+					})
+					
+				}
+			},
+			checkall(){
+				if(this.isuser==false||this.check_password.length == 0){
+					return false
+				}else{
+					return true
+				}
 			}
 		}
 	};
@@ -150,6 +224,7 @@
 
 <style lang="scss">
 	.content {
+		
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -157,6 +232,7 @@
 	}
 
 	.top-bar {
+		
 		position: absolute;
 		top: 0;
 		width: 100%;
@@ -168,6 +244,7 @@
 		margin-top: 16rpx;
 
 		.top-bar-left {
+			
 			float: left;
 			padding-left: 24rpx;
 			padding-top: 20rpx;
